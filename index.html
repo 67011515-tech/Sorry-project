@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>มีอะไรจะบอก...</title>
+  <style>
+    body {
+      background: black;
+      color: #00ffcc;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    #text {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #ff4d6d;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    #couple {
+      width: 250px;
+      border-radius: 20px;
+      margin: 20px;
+      display: none;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: red;
+      font-size: 20px;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="text"></div>
+
+
+<img id="couple" src="c:\Users\phutt\OneDrive\Sorry-project\Mymint1.jpg"
+style="width:250px; border-radius: 20px; margin: 20px auto; display: none; ">
+
+<button onclick="showLove()">กดตรงนี้สิ 💖</button>
+
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+<script>
+const message = "เค้าขอโทษนะ ที่ทำให้เบ้บเสียใจ 😢 อยากให้เบ้บกลับมายิ้มอีกครั้ง 💕";
+let i = 0;
+
+function typeEffect() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  } else {
+    document.querySelector("button").style.display = "inline";
+  }
+}
+
+typeEffect();
+
+function showLove() {
+
+  document.getElementById("couple").style.display = "block";
+
+  document.getElementById("music").play();
+
+  for (let i = 0; i < 30; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    document.body.appendChild(heart);
+  }
+
+  document.getElementById("text").innerHTML =
+    "หายงอนยัง ดีกันนะ ขอกอดแมวอ้วนๆได้ไหมล่ะ 🥺💖";
+}
+</script>
+
+</body>
+</html>
